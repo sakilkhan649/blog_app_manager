@@ -8,7 +8,7 @@ class Customtextfield extends StatelessWidget {
   final bool obscureText;
   final TextInputType textInputType;
   final InputBorder? inputBorder;
-  final Validator;
+  final String? Function(String?)? validator;
   final TextStyle? inputTextStyle;
 
   Customtextfield({
@@ -20,17 +20,17 @@ class Customtextfield extends StatelessWidget {
     this.suffixIcon,
     required this.obscureText,
     required this.textInputType,
-    this.Validator,
+    this.validator,
   });
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.centerLeft,
-      height: 56.h,
+      constraints: BoxConstraints(minHeight: 56.h),
       child: TextFormField(
         style: inputTextStyle ?? TextStyle(color: Colors.white),
         cursorColor: Colors.white,
-        validator: Validator,
+        validator: validator,
         controller: controller,
         keyboardType: textInputType,
         obscureText: obscureText,
@@ -47,6 +47,10 @@ class Customtextfield extends StatelessWidget {
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white12),
             borderRadius: BorderRadius.all(Radius.circular(10.r)),
+          ),
+          errorStyle: TextStyle(
+            color: Colors.red,
+            fontSize: 12.sp,
           ),
         ),
       ),

@@ -25,7 +25,7 @@ class LoginPage extends StatelessWidget {
         backgroundColor: Colors.black,
         appBar: CustomAppBar(title: "Sign in", leading: CustomBackButton()),
         body: Padding(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: SingleChildScrollView(
             child: Column(
               children: [
@@ -43,7 +43,7 @@ class LoginPage extends StatelessWidget {
                   hintText: "Email",
                   obscureText: false,
                   textInputType: TextInputType.emailAddress,
-                  Validator: (value) {
+                  validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Enter your Email";
                     }
@@ -72,7 +72,7 @@ class LoginPage extends StatelessWidget {
                     hintText: "Password",
                     obscureText: !isPasswordVisible.value,
                     textInputType: TextInputType.visiblePassword,
-                    Validator: (value) {
+                    validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Enter your Password";
                       }
@@ -95,7 +95,7 @@ class LoginPage extends StatelessWidget {
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
                               controller.login();
-                              //Get.toNamed(Routes.loginpage);
+                              Get.toNamed(Routes.mainpage);
                             }
                           },
                         ),

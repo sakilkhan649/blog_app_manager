@@ -13,55 +13,59 @@ class OnboardPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Column(
-        children: [
-          Image.asset(
-            AppImages.onboardimage,
-            height: 320.h,
-            width: 390.w,
-            fit: BoxFit.cover,
-          ),
-          Padding(
-            padding: EdgeInsetsGeometry.symmetric(
-              horizontal: 16.w,
-              vertical: 20.w,
+      body: SafeArea(
+        child: Column(
+          children: [
+            Image.asset(
+              AppImages.onboardimage,
+              height: 320.h,
+              width: 390.w,
+              fit: BoxFit.cover,
             ),
-            child: Column(
-              children: [
-                CustomText(
-                  text: "Welcome to Your Personal",
-                  fontSize: 28.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 16.w,
+                  vertical: 20.w,
                 ),
-                CustomText(
-                  text: "Blog Space",
-                  fontSize: 28.sp,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                child: Column(
+                  children: [
+                    CustomText(
+                      text: "Welcome to Your Personal",
+                      fontSize: 28.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    CustomText(
+                      text: "Blog Space",
+                      fontSize: 28.sp,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    SizedBox(height: 12.h),
+                    CustomText(
+                      text: "Discover articles,save your favorites,and engage",
+                      fontSize: 16.sp,
+                      color: Colors.white,
+                    ),
+                    CustomText(
+                      text: "with the community.",
+                      fontSize: 16.sp,
+                      color: Colors.white,
+                    ),
+                    SizedBox(height: 210.h),
+                    CustomButton(
+                      text: "Get Started",
+                      onPressed: () {
+                        Get.toNamed(Routes.loginpage);
+                      },
+                    ),
+                  ],
                 ),
-                SizedBox(height: 12.h),
-                CustomText(
-                  text: "Discover articles,save your favorites,and engage",
-                  fontSize: 16.sp,
-                  color: Colors.white,
-                ),
-                CustomText(
-                  text: "with the community.",
-                  fontSize: 16.sp,
-                  color: Colors.white,
-                ),
-                SizedBox(height: 266.h),
-                CustomButton(
-                  text: "Get Started",
-                  onPressed: () {
-                    Get.toNamed(Routes.loginpage);
-                  },
-                ),
-              ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

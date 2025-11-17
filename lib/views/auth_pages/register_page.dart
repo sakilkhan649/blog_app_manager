@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
+import '../../core/routs/routs.dart';
 import '../../utils/app_const/app_const.dart';
 import '../../widgets/Custom_Text.dart';
 import '../../widgets/Custom_appbar.dart';
@@ -17,6 +18,7 @@ class RegisterPage extends StatelessWidget {
   final controller = Get.put(Registercontroller());
   final isPasswordVisible = false.obs;
   final isConfirmPasswordVisible = false.obs;
+  final confirmPasswordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,7 @@ class RegisterPage extends StatelessWidget {
           leading: CustomBackButton(),
         ),
         body: Padding(
-          padding: EdgeInsetsGeometry.symmetric(horizontal: 16),
+          padding: EdgeInsets.symmetric(horizontal: 16.w),
           child: SingleChildScrollView(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -43,7 +45,7 @@ class RegisterPage extends StatelessWidget {
                   hintText: "Enter your username",
                   obscureText: false,
                   textInputType: TextInputType.text,
-                  Validator: (value) {
+                  validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Enter your Username";
                     }
@@ -61,7 +63,7 @@ class RegisterPage extends StatelessWidget {
                   hintText: "Enter your email",
                   obscureText: false,
                   textInputType: TextInputType.emailAddress,
-                  Validator: (value) {
+                  validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Enter your Email";
                     }
@@ -79,7 +81,7 @@ class RegisterPage extends StatelessWidget {
                   hintText: "Enter your phone number",
                   obscureText: false,
                   textInputType: TextInputType.phone,
-                  Validator: (value) {
+                  validator: (value) {
                     if (value == null || value.isEmpty) {
                       return "Enter your phone number";
                     }
@@ -110,7 +112,7 @@ class RegisterPage extends StatelessWidget {
                     hintText: "Confirm your password",
                     obscureText: !isPasswordVisible.value,
                     textInputType: TextInputType.visiblePassword,
-                    Validator: (value) {
+                    validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Enter your Password";
                       }
@@ -144,11 +146,11 @@ class RegisterPage extends StatelessWidget {
                             !isConfirmPasswordVisible.value;
                       },
                     ),
-                    controller: controller.passwordController,
+                    controller: controller.confirmpasswordController,
                     hintText: "Confirm your password",
                     obscureText: !isConfirmPasswordVisible.value,
                     textInputType: TextInputType.visiblePassword,
-                    Validator: (value) {
+                    validator: (value) {
                       if (value == null || value.isEmpty) {
                         return "Enter your Password";
                       }
@@ -171,7 +173,7 @@ class RegisterPage extends StatelessWidget {
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
                               controller.register();
-                              //Get.toNamed(Routes.loginpage);
+                              Get.toNamed(Routes.mainpage);
                             }
                           },
                         ),

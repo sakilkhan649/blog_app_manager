@@ -5,23 +5,19 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomBackButton extends StatelessWidget {
-  CustomBackButton({super.key, this.title = 'Back'});
-  String title = "";
+  CustomBackButton({super.key});
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 23.h,
-      child: GestureDetector(
-        onTap: () {
-          Get.back();
-        },
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: SvgPicture.asset(
-            AppImages.backiconurl,
-            height: 24.h,
-            width: 24.w,
-          ),
+    return GestureDetector(
+      onTap: () {
+        Get.back();
+      },
+      child: Padding(
+        padding: EdgeInsets.only(left: 16.w),
+        child: SvgPicture.asset(
+          AppImages.backiconurl,
+          height: 24.h,
+          width: 24.w,
         ),
       ),
     );

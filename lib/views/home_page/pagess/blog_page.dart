@@ -1,4 +1,4 @@
-import 'package:blog_app/widgets/CustomButtomNav.dart';
+import 'package:blog_app/widgets/CustomBottomNav.dart';
 import 'package:flutter/material.dart';
 
 class BlogPage extends StatelessWidget {

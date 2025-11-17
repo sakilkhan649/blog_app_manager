@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../widgets/CustomButtomNav.dart';
+import '../../../widgets/CustomBottomNav.dart';
 
 class BookmarksPage extends StatelessWidget {
   const BookmarksPage({super.key});

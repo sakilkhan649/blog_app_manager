@@ -3,7 +3,9 @@ import 'package:blog_app/views/auth_pages/register_page.dart';
 import 'package:blog_app/views/home_page/main_page.dart';
 import 'package:blog_app/views/home_page/pagess/blog_page.dart';
 import 'package:blog_app/views/home_page/pagess/bookmarks_page.dart';
-import 'package:blog_app/views/home_page/pagess/profile_page.dart';
+import 'package:blog_app/views/home_page/pagess/profilepagess/edit_profile_page.dart';
+import 'package:blog_app/views/home_page/pagess/profilepagess/profile_page.dart';
+import 'package:blog_app/views/home_page/pagess/profilepagess/update_password_page.dart';
 import 'package:blog_app/views/onboard_page.dart';
 import 'package:get/get.dart';
 
@@ -15,6 +17,8 @@ class Routes {
   static const String blogpage = "/Blogpage";
   static const String bookmarksPage = "/BookmarksPage";
   static const String profilePage = "/ProfilePage";
+  static const String editProfilePage = "/EditProfilePage";
+  static const String updatePasswordPage = "/UpdatePasswordPage";
 
   static List<GetPage> routes = [
     GetPage(name: ondoardpage, page: () => OnboardPage()),
@@ -24,5 +28,7 @@ class Routes {
     GetPage(name: blogpage, page: () => BlogPage()),
     GetPage(name: bookmarksPage, page: () => BookmarksPage()),
     GetPage(name: profilePage, page: () => ProfilePage()),
+    GetPage(name: editProfilePage, page: () => EditProfilePage()),
+    GetPage(name: updatePasswordPage, page: () => UpdatePasswordPage()),
   ];
 }

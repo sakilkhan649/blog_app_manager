@@ -2,6 +2,7 @@ class AppImages{
   static const String buseurl="assets/images";
   static const String onboardimage="$buseurl/onboard_image.png";
   static const String profileimage="$buseurl/profileimage.png";
+  static const String editprofileimage="$buseurl/editprofileimage.png";
 
   //====================icons===========================
 

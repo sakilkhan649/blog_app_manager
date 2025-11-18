@@ -1,8 +1,10 @@
 import 'dart:convert';
+import 'package:blog_app/servicess/Shared_servicess.dart';
 import 'package:blog_app/servicess/api_servicess.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../servicess/sheard_services.dart';
+
+import '../helper/helper.dart';
 
 class Registercontroller extends GetxController {
   TextEditingController usernameController = TextEditingController();

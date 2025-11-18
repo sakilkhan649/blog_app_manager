@@ -1,13 +1,21 @@
-class AppConfig{
-  static const String baseUrl="https://api.zhndev.site/wp-json";
-  static const String apiUrl="$baseUrl/blog-app/v1";
+class AppConfig {
+  static const String baseUrl = "https://api.zhndev.site/wp-json";
+  static const String apiUrl = "$baseUrl/blog-app/v1";
 
-  //=================endponits===================================
+  // =================== Authentication URLs ===================
+  static Uri loginUrl = Uri.parse("$apiUrl/auth/login");
+  static Uri registerUrl = Uri.parse("$apiUrl/auth/register");
+  static Uri tokenrefreshUrl = Uri.parse("$apiUrl/auth/refresh-token");
+  static Uri logoutUrl = Uri.parse("$apiUrl/auth/logout");
 
-static Uri loginUrl=Uri.parse("$apiUrl/auth/login");
-static Uri registerUrl=Uri.parse("$apiUrl/auth/register");
+  // =================== User Profile URLs ===================
+  static Uri userProfileUrl = Uri.parse("$apiUrl/user/profile");
+  static Uri changePasswordUrl = Uri.parse("$apiUrl/user/change-password");
+  static Uri userLikesUrl = Uri.parse("$apiUrl/user/likes");
 
+  // =================== Categories URLs ===================
+  static Uri categoriesUrl = Uri.parse("$apiUrl/categories");
 
-
-
+  // =================== Comments URLs ===================
+  static Uri commentsUrl = Uri.parse("$apiUrl/comments");
 }

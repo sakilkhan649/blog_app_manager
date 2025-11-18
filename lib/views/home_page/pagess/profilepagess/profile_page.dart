@@ -1,4 +1,5 @@
 import 'package:blog_app/core/routs/routs.dart';
+import 'package:blog_app/servicess/api_servicess.dart';
 import 'package:blog_app/utils/app_image/app_image.dart';
 import 'package:blog_app/widgets/Custom_Text.dart';
 import 'package:blog_app/widgets/Custom_appbar.dart';
@@ -39,7 +40,12 @@ class ProfilePage extends StatelessWidget {
             Center(
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(64.r),
-                child: Image.asset(AppImages.profileimage, fit: BoxFit.cover),
+                child: Image.asset(
+                  AppImages.profileimage,
+                  fit: BoxFit.cover,
+                  height: 128.h,
+                  width: 128.w,
+                ),
               ),
             ),
             SizedBox(height: 16.h),
@@ -79,13 +85,13 @@ class ProfilePage extends StatelessWidget {
             //Password field=======================================
             GestureDetector(
               onTap: () {
-                Get.toNamed(Routes.editProfilePage);
+                Get.toNamed(Routes.updatePasswordPage);
               },
               child: Row(
                 children: [
                   IconButton(
                     onPressed: () {
-                      Get.toNamed(Routes.editProfilePage);
+                      Get.toNamed(Routes.updatePasswordPage);
                     },
                     icon: Padding(
                       padding: EdgeInsets.only(right: 16.w),
@@ -109,6 +115,7 @@ class ProfilePage extends StatelessWidget {
                 text: "Logout",
                 textColor: Colors.white,
                 onPressed: () {
+                 // ApiServicss.logout(token);
                   // Get.toNamed(Routes.loginpage);
                 },
               ),

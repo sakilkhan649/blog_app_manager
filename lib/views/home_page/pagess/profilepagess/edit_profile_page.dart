@@ -1,21 +1,28 @@
 import 'package:blog_app/widgets/Custom_back_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import '../../../../controllers/EditProfilePageController.dart';
 import '../../../../utils/app_image/app_image.dart';
 import '../../../../widgets/Custom_Text.dart';
 import '../../../../widgets/Custom_appbar.dart';
 import '../../../../widgets/custom_button.dart';
 
-class EditProfilePage extends StatelessWidget {
+class EditProfilePage extends StatefulWidget {
   EditProfilePage({super.key});
 
-  TextEditingController editnameController = TextEditingController();
-  TextEditingController editemailController = TextEditingController();
-  TextEditingController bioController = TextEditingController();
+  @override
+  State<EditProfilePage> createState() => _EditProfilePageState();
+}
+
+class _EditProfilePageState extends State<EditProfilePage> {
+  final EditProfileController controller = Get.put(EditProfileController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: CustomAppBar(title: "Edit Profile", leading: CustomBackButton()),
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
@@ -31,6 +38,8 @@ class EditProfilePage extends StatelessWidget {
                   child: Image.asset(
                     AppImages.editprofileimage,
                     fit: BoxFit.cover,
+                    height: 128.h,
+                    width: 128.w,
                   ),
                 ),
               ),
@@ -55,7 +64,7 @@ class EditProfilePage extends StatelessWidget {
                   color: Colors.white12,
                 ),
                 child: TextFormField(
-                  controller: editnameController,
+                  controller: controller.editNameController,
                   cursorColor: Colors.white,
                   keyboardType: TextInputType.text,
                   style: TextStyle(color: Colors.white, fontSize: 16.sp),
@@ -80,7 +89,7 @@ class EditProfilePage extends StatelessWidget {
                   color: Colors.white12,
                 ),
                 child: TextFormField(
-                  controller: editemailController,
+                  controller: controller.editEmailController,
                   cursorColor: Colors.white,
                   keyboardType: TextInputType.text,
                   style: TextStyle(color: Colors.white, fontSize: 16.sp),
@@ -98,16 +107,17 @@ class EditProfilePage extends StatelessWidget {
               CustomText(text: "Bio", color: Colors.white),
               SizedBox(height: 3.h),
               Container(
-                height: 144.h,
+                height: 120.h,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12.r),
                   color: Colors.white12,
                 ),
                 child: TextFormField(
-                  controller: bioController,
+                  controller: controller.bioController,
                   cursorColor: Colors.white,
-                  keyboardType: TextInputType.multiline,
-                  maxLines: null,
+                  minLines: 10,
+                  maxLines: 10,
+                  maxLength: 50,
                   style: TextStyle(color: Colors.white, fontSize: 16.sp),
                   decoration: InputDecoration(
                     border: InputBorder.none,

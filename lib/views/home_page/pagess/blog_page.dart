@@ -1,4 +1,3 @@
-import 'package:blog_app/widgets/CustomBottomNav.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,9 +29,8 @@ class BlogPage extends StatelessWidget {
         ],
       ),
       body: Center(
-        child: Text("Blog",style: TextStyle(color: Colors.white),),
+        child: Text("Blog", style: TextStyle(color: Colors.white)),
       ),
-      bottomNavigationBar: CustomBottomNav(),
     );
   }
 }

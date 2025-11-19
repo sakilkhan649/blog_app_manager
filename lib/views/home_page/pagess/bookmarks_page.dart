@@ -1,8 +1,6 @@
-import 'package:blog_app/widgets/Custom_textField.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import '../../../utils/app_image/app_image.dart';
-import '../../../widgets/CustomBottomNav.dart';
 import '../../../widgets/Custom_appbar.dart';
 import '../../../widgets/Custom_back_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -34,7 +32,7 @@ class BookmarksPage extends StatelessWidget {
                 style: TextStyle(color: Colors.white, fontSize: 16.sp),
                 decoration: InputDecoration(
                   hintText: "Search bookmarks",
-                  hintStyle: TextStyle(color: Colors.white12,),
+                  hintStyle: TextStyle(color: Colors.white12),
                   prefixIcon: IconButton(
                     onPressed: () {},
                     icon: Padding(
@@ -43,21 +41,26 @@ class BookmarksPage extends StatelessWidget {
                         AppImages.searchiconurl,
                         height: 48.h,
                         width: 48.w,
-                        colorFilter: ColorFilter.mode(Colors.white12, BlendMode.srcIn),
+                        colorFilter: ColorFilter.mode(
+                          Colors.white12,
+                          BlendMode.srcIn,
+                        ),
                       ),
                     ),
                   ),
                   border: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   enabledBorder: InputBorder.none,
-                  contentPadding: EdgeInsets.symmetric(horizontal: 10.w,vertical: 15),
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal: 10.w,
+                    vertical: 15,
+                  ),
                 ),
               ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: CustomBottomNav(),
     );
   }
 }

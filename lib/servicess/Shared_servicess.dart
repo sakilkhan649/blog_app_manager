@@ -33,4 +33,14 @@ class SharedService {
         : null;
     return data;
   }
+
+  static Future<bool> removeData(String key) async {
+    final prefs = await SharedPreferences.getInstance();
+    return await prefs.remove(key);
+  }
+
+  static Future<bool> clearAll() async {
+    final prefs = await SharedPreferences.getInstance();
+    return await prefs.clear();
+  }
 }

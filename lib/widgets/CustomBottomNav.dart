@@ -13,28 +13,29 @@ class CustomBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => Container(
-        height: 75.h,
-        padding: EdgeInsets.fromLTRB(42.w, 8.w, 42.w, 12.w),
+          () => Container(
+        padding: EdgeInsets.fromLTRB(42.w, 8.h, 42.w, 12.h),
         decoration: const BoxDecoration(
           color: Colors.black,
           border: Border(top: BorderSide(color: Colors.white12, width: 1)),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _navItem(icon: AppImages.blogiconurl, label: "Blog", index: 0),
-            _navItem(
-              icon: AppImages.bookmarksiconurl,
-              label: "Bookmarks",
-              index: 1,
-            ),
-            _navItem(
-              icon: AppImages.profileiconurl,
-              label: "Profile",
-              index: 2,
-            ),
-          ],
+        child: SafeArea(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              _navItem(icon: AppImages.blogiconurl, label: "Blog", index: 0),
+              _navItem(
+                icon: AppImages.bookmarksiconurl,
+                label: "Bookmarks",
+                index: 1,
+              ),
+              _navItem(
+                icon: AppImages.profileiconurl,
+                label: "Profile",
+                index: 2,
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -51,28 +52,32 @@ class CustomBottomNav extends StatelessWidget {
     return InkWell(
       onTap: () => controller.changePage(index),
       borderRadius: BorderRadius.circular(12.r),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SvgPicture.asset(
-            icon,
-            height: 24.h,
-            width: 24.w,
-            colorFilter: ColorFilter.mode(
-              isActive ? Colors.white : Colors.white70,
-              BlendMode.srcIn,
+      child: Padding(
+        padding: EdgeInsets.symmetric(vertical: 8.h),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              icon,
+              height: 24.h,
+              width: 24.w,
+              colorFilter: ColorFilter.mode(
+                isActive ? Colors.white : Colors.white70,
+                BlendMode.srcIn,
+              ),
             ),
-          ),
-          SizedBox(height: 4.h),
-          Text(
-            label,
-            style: TextStyle(
-              color: isActive ? Colors.white : Colors.white70,
-              fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
-              fontSize: 12,
+            SizedBox(height: 4.h),
+            Text(
+              label,
+              style: TextStyle(
+                color: isActive ? Colors.white : Colors.white70,
+                fontWeight: isActive ? FontWeight.bold : FontWeight.normal,
+                fontSize: 12.sp,
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

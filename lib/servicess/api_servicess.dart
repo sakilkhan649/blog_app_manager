@@ -35,17 +35,6 @@ class ApiServicss {
     );
   }
 
-  static Future<http.Response> tokenrefresh({
-    required String refreshToken,
-  }) async {
-    return await http.post(
-      AppConfig.tokenrefreshUrl,
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer $refreshToken',
-      },
-    );
-  }
 
   static Future<http.Response> logout(String token) async {
     return await http.post(

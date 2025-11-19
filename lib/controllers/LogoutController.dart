@@ -1,49 +1,40 @@
 import 'dart:convert';
 import 'package:blog_app/servicess/api_servicess.dart';
-import 'package:flutter/material.dart';
+import 'package:blog_app/widgets/Custom_snakbar.dart';
 import 'package:get/get.dart';
-
-import '../helper/helper.dart';
+import '../core/routs/routs.dart';
 import '../servicess/Shared_servicess.dart';
 
-class LoginControllers extends GetxController {
-  TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
-
+class Logoutcontroller extends GetxController {
   var isLoading = false.obs;
 
-  Future<void> login() async {
+  Future<void> logout() async {
     try {
       isLoading.value = true;
+      final token = await SharedService.getData(SetType.string, "token");
 
-      final response = await ApiServicss.login(
-        email: emailController.text,
-        password: passwordController.text,
-      );
-
-      final json = jsonDecode(response.body);
-
+      if (token == null || token.isEmpty) {
+        CustomFlushbar(
+          message: 'No token found. Please login again.',
+          isSuccess: false,
+        );
+        Get.offAllNamed(Routes.loginpage);
+        return;
+      }
+      final response = await ApiServicss.logout(token);
       if (response.statusCode == 200) {
-        await SharedService.setData(
-          SetType.string,
-          "token",
-          json["data"]["token"],
-        );
+        final json = jsonDecode(response.body);
+        await SharedService.removeData("token");
 
-        emailController.clear();
-        passwordController.clear();
+        CustomFlushbar(message: json['message'] ?? "Logout Successful");
 
-        Get.snackbar(
-          'Success',
-          'Login Successful',
-          backgroundColor: Colors.white70,
-        );
-        // Get.offAll(() => HomePage());
+        Get.offAllNamed(Routes.loginpage);
       } else {
-        Get.snackbar('Error', json['message'], backgroundColor: Colors.white70);
+        final json = jsonDecode(response.body);
+        CustomFlushbar(message: json['message'] ?? 'Logout failed');
       }
     } catch (error) {
-      Get.snackbar('Error', error.toString(), backgroundColor: Colors.white70);
+      print(error);
     } finally {
       isLoading.value = false;
     }

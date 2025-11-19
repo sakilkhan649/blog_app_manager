@@ -1,3 +1,4 @@
+import 'package:blog_app/controllers/UpdatePasswordController.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -16,9 +17,8 @@ class UpdatePasswordPage extends StatelessWidget {
   final isPasswordVisible = false.obs;
   final isConfirmPasswordVisible = false.obs;
   final isConfirmnewPasswordVisible = false.obs;
-  final currentPasswordController = TextEditingController();
-  final newPasswordController = TextEditingController();
-  final confirmnewPasswordController = TextEditingController();
+
+  UpdatePasswordController controller = Get.put(UpdatePasswordController());
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,11 @@ class UpdatePasswordPage extends StatelessWidget {
               children: [
                 SizedBox(height: 12.h),
 
-                CustomText(text: "Current Password", fontSize: 16, color: Colors.white),
+                CustomText(
+                  text: "Current Password",
+                  fontSize: 16,
+                  color: Colors.white,
+                ),
                 SizedBox(height: 5.h),
 
                 Obx(
@@ -55,7 +59,7 @@ class UpdatePasswordPage extends StatelessWidget {
                         isPasswordVisible.value = !isPasswordVisible.value;
                       },
                     ),
-                    controller: currentPasswordController,
+                    controller: controller.currentPasswordController,
                     hintText: "Enter  your current password",
                     obscureText: !isPasswordVisible.value,
                     textInputType: TextInputType.visiblePassword,
@@ -92,7 +96,7 @@ class UpdatePasswordPage extends StatelessWidget {
                             !isConfirmPasswordVisible.value;
                       },
                     ),
-                    controller: confirmnewPasswordController,
+                    controller: controller.newPasswordController,
                     hintText: "Enter  your new password",
                     obscureText: !isConfirmPasswordVisible.value,
                     textInputType: TextInputType.visiblePassword,
@@ -116,7 +120,7 @@ class UpdatePasswordPage extends StatelessWidget {
                 ),
                 SizedBox(height: 5.h),
                 Obx(
-                      () => Customtextfield(
+                  () => Customtextfield(
                     suffixIcon: IconButton(
                       icon: Icon(
                         isConfirmnewPasswordVisible.value
@@ -126,10 +130,10 @@ class UpdatePasswordPage extends StatelessWidget {
                       ),
                       onPressed: () {
                         isConfirmnewPasswordVisible.value =
-                        !isConfirmnewPasswordVisible.value;
+                            !isConfirmnewPasswordVisible.value;
                       },
                     ),
-                    controller: confirmnewPasswordController,
+                    controller: controller.confirmPasswordController,
                     hintText: "Confirm  your new password",
                     obscureText: !isConfirmnewPasswordVisible.value,
                     textInputType: TextInputType.visiblePassword,
@@ -150,7 +154,7 @@ class UpdatePasswordPage extends StatelessWidget {
                   text: "Update Password",
                   onPressed: () {
                     if (_formkey.currentState!.validate()) {
-                      // Get.toNamed(Routes.mainpage);
+                      controller.changePassword();
                     }
                   },
                 ),

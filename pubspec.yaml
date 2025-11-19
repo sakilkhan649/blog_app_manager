@@ -39,6 +39,10 @@ dependencies:
   http: ^1.6.0
   flutter_svg: ^2.2.2
   shared_preferences: ^2.5.3
+  another_flushbar: ^1.12.30
+
+
+
 
 dev_dependencies:
   flutter_test:

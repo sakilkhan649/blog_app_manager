@@ -1,9 +1,9 @@
 import 'dart:convert';
+import 'package:blog_app/core/routs/routs.dart';
 import 'package:blog_app/servicess/api_servicess.dart';
+import 'package:blog_app/widgets/Custom_snakbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../helper/helper.dart';
 import '../servicess/Shared_servicess.dart';
 
 class LoginControllers extends GetxController {
@@ -33,17 +33,14 @@ class LoginControllers extends GetxController {
         emailController.clear();
         passwordController.clear();
 
-        Get.snackbar(
-          'Success',
-          'Login Successful',
-          backgroundColor: Colors.white70,
-        );
-        // Get.offAll(() => HomePage());
+        CustomFlushbar(message: 'Login Successful', isSuccess: true);
+
+        Get.offAllNamed(Routes.mainpage);
       } else {
-        Get.snackbar('Error', json['message'], backgroundColor: Colors.white70);
+        CustomFlushbar(message: json['message'], isSuccess: false);
       }
     } catch (error) {
-      Get.snackbar('Error', error.toString(), backgroundColor: Colors.white70);
+      print(error);
     } finally {
       isLoading.value = false;
     }

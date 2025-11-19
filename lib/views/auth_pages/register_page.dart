@@ -173,7 +173,6 @@ class RegisterPage extends StatelessWidget {
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
                               controller.register();
-                              Get.toNamed(Routes.mainpage);
                             }
                           },
                         ),

@@ -1,10 +1,10 @@
 import 'dart:convert';
 import 'package:blog_app/servicess/Shared_servicess.dart';
 import 'package:blog_app/servicess/api_servicess.dart';
+import 'package:blog_app/widgets/Custom_snakbar.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../helper/helper.dart';
+import '../core/routs/routs.dart';
 
 class Registercontroller extends GetxController {
   TextEditingController usernameController = TextEditingController();
@@ -42,17 +42,14 @@ class Registercontroller extends GetxController {
         emailController.clear();
         passwordController.clear();
 
-        Get.snackbar(
-          'Success',
-          'Registration Successful',
-          backgroundColor: Colors.white70,
-        );
-        // Get.offAll(() => HomePage());
+        CustomFlushbar(message: 'Registration Successful', isSuccess: true);
+
+        Get.offAllNamed(Routes.mainpage);
       } else {
-        Get.snackbar('Error', json['message'], backgroundColor: Colors.white70);
+        CustomFlushbar(message: json['message'], isSuccess: false);
       }
     } catch (error) {
-      Get.snackbar('Error', error.toString(), backgroundColor: Colors.white70);
+      print(error);
     } finally {
       isLoading.value = false;
     }

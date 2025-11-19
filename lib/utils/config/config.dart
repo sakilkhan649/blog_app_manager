@@ -5,7 +5,6 @@ class AppConfig {
   // =================== Authentication URLs ===================
   static Uri loginUrl = Uri.parse("$apiUrl/auth/login");
   static Uri registerUrl = Uri.parse("$apiUrl/auth/register");
-  static Uri tokenrefreshUrl = Uri.parse("$apiUrl/auth/refresh-token");
   static Uri logoutUrl = Uri.parse("$apiUrl/auth/logout");
 
   // =================== User Profile URLs ===================

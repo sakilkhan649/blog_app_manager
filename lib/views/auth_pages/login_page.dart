@@ -95,7 +95,6 @@ class LoginPage extends StatelessWidget {
                           onPressed: () {
                             if (_formkey.currentState!.validate()) {
                               controller.login();
-                              Get.toNamed(Routes.mainpage);
                             }
                           },
                         ),

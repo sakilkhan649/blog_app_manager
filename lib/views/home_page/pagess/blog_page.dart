@@ -29,6 +29,9 @@ class BlogPage extends StatelessWidget {
           ),
         ],
       ),
+      body: Center(
+        child: Text("Blog",style: TextStyle(color: Colors.white),),
+      ),
       bottomNavigationBar: CustomBottomNav(),
     );
   }

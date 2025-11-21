@@ -1,8 +1,28 @@
 import 'dart:convert';
+import 'package:blog_app/servicess/Shared_servicess.dart';
 import 'package:blog_app/utils/config/config.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 
+import '../core/routs/routs.dart';
+import '../widgets/Custom_snakbar.dart';
+
 class ApiServicss {
+
+  // ApiServicss class e helper method
+  static Future<dynamic> handleResponse(http.Response response) async {
+    if (response.statusCode == 401) {
+      // Token expired or invalid
+      await SharedService.removeData("token");
+      Get.offAllNamed(Routes.loginpage);
+      CustomFlushbar(message: 'Session expired. Please login again', isSuccess: false);
+      return null;
+    }
+    return response;
+  }
+
+
+
   // =================== Authentication APIs ===================
 
   static Future<http.Response> login({
@@ -318,3 +338,4 @@ class ApiServicss {
     );
   }
 }
+

@@ -20,12 +20,17 @@ class ProfileController extends GetxController {
       isLoading.value = true;
 
       final token = await SharedService.getData(SetType.string, "token");
+      print("TOKEN = $token"); // Always print
+
 
       if (token == null || token.isEmpty) {
         CustomFlushbar(message: 'Please login first', isSuccess: false);
         return;
       }
       final response = await ApiServicss.getUserProfile(token);
+      print("PROFILE STATUS = ${response.statusCode}");
+      print("PROFILE BODY = ${response.body}");
+
       final json = jsonDecode(response.body);
 
       if (response.statusCode == 200) {
@@ -34,6 +39,9 @@ class ProfileController extends GetxController {
         CustomFlushbar(
           message: json['message'] ?? 'Profile loaded successfully',
         );
+        print("TOKEN = $token");
+        print("PROFILE STATUS = ${response.statusCode}");
+        print("PROFILE BODY = ${response.body}");
       } else {
         CustomFlushbar(message: json['message'] ?? 'Failed to load profile');
       }

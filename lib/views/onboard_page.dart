@@ -1,13 +1,19 @@
+import 'package:blog_app/controllers/OnboardController.dart';
 import 'package:blog_app/core/routs/routs.dart';
 import 'package:blog_app/utils/app_image/app_image.dart';
 import 'package:blog_app/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import '../servicess/Shared_servicess.dart';
 import '../widgets/Custom_Text.dart';
 
 class OnboardPage extends StatelessWidget {
-  const OnboardPage({super.key});
+   OnboardPage({super.key});
+
+   Onboardcontroller controller = Get.put(Onboardcontroller());
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +63,7 @@ class OnboardPage extends StatelessWidget {
                     CustomButton(
                       text: "Get Started",
                       onPressed: () {
-                        Get.toNamed(Routes.loginpage);
+                        controller.navigateToNextPage();
                       },
                     ),
                   ],
